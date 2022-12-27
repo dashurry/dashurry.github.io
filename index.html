@@ -1,122 +1,134 @@
 <html>
-  <head>
-    <title>Replace ß with ss</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<head>
+  <title>Replace ß with ss</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <style>
-  pre {
-    background-color: #f6f8fa;
-    border-radius: 3px;
-    font-size: 85%;
-    line-height: 1.45;
-    overflow-x: auto;
-    padding: 16px;
-  }
+    pre {
+      background-color: #f6f8fa;
+      border-radius: 3px;
+      font-size: 85%;
+      line-height: 1.45;
+      overflow-x: auto;
+      padding: 16px;
+    }
 
-  code {
-    background-color: transparent;
-    font-size: 100%;
-    margin: 0;
-    padding: 0;
-    white-space: pre-wrap;
-    word-break: break-all;
-  }
+    code {
+      background-color: transparent;
+      font-size: 100%;
+      margin: 0;
+      padding: 0;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
 
-  .highlight {
-    background-color: #fff5b1;
-  }
-</style>
+    .highlight {
+      background-color: #fff5b1;
+    }
+  </style>
 
-  </head>
-  <body>
-    
-    <nav class="navbar navbar-expand navbar-light bg-white">
-  <div class="container">
-    <a class="navbar-brand mx-auto" href="#">
-      <img src="https://via.placeholder.com/100x30.png?text=Logo" alt="Logo">
-    </a>
-  </div>
-</nav>
+</head>
 
+<body>
 
-
-
-     
-
-    <form id="form" class="container mt-5">
-  <div class="row">
-    <div class="col-md-6 offset-md-3">
-      <label for="text">Enter text:</label><br>
-      <textarea id="text" rows="5" class="form-control"></textarea><br>
-      <button type="submit" class="btn btn-primary">Replace</button>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand mx-auto" href="#">Replace ß with ss</a>
     </div>
-  </div>
-</form>
-    
-<div id="result" class="container mt-5">
-  <div class="row">
-    <div class="col-md-6 offset-md-3">
-      <div class="card p-3">
-        <pre class="result-code"><code class="language-javascript"></code></pre>
-        <button type="button" class="btn btn-secondary mt-2" id="copy-button">Copy code</button>
+  </nav>
+
+  <form id="form" class="container mt-5">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <label for="text">Enter text:</label><br>
+        <textarea id="text" rows="5" class="form-control"></textarea><br>
+        <button type="submit" class="btn btn-primary">Replace</button>
+      </div>
+    </div>
+  </form>
+
+  <div id="result" class="container mt-5">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="card p-3">
+          <pre class="result-code"><code class="language-javascript"></code></pre>
+          <button type="button" class="btn btn-secondary mt-2" id="copy-button">Copy code</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<footer class="bg-light py-3 mt-5">
-  <div class="container text-center">
-    &copy; 2021 Replace ß with ss
-  </div>
-</footer>
 
-<script>
-  // The replaceSs function from the previous example
-  function replaceSs(text) {
-    if (text.indexOf("ß") !== -1) {
-      text = text.replace(/ß/g, "ss");
+  <script>
+    // The replaceSs function
+    function replaceSs(text) {
+      if (text.indexOf("ß") !== -1) {
+        text = text.replace(/ß/g, "ss");
+      }
+      return text;
     }
-    return text;
-  }
 
-  // Get the form element
-  const form = document.getElementById("form");
+    // Get the form element
+    const form = document.getElementById("form");
 
-  // Add an event listener for the submit event
-  form.addEventListener("submit", (event) => {
-    // Prevent the form from being submitted
-    event.preventDefault();
+    // Add an event listener for the submit event
+    form.addEventListener("submit", (event) => {
+      // Prevent the form from being submitted
+      event.preventDefault();
 
-    // Get the text from the textarea
-    const text = document.getElementById("text").value;
+      // Get the text from the textarea
+      const text = document.getElementById("text").value;
 
-    // Replace the "ß" characters with "ss"
-    let result = replaceSs(text);
+      // Replace the "ß" characters with "ss"
+      let result = replaceSs(text);
 
-    // Highlight the "ß" characters
-    result = result.replace(/ß/g, '<span class="highlight">ß</span>');
+      // Highlight the "ß" characters
+      result = result.replace(/ß/g, '<span class="highlight">ß</span>');
 
-    // Display the result
-    document.querySelector(".result-code > code").innerHTML = result;
-  });
+      // Display the result
+      document.querySelector(".result-code > code").innerHTML = result;
+    });
 
-  // Get the copy button
-  const copyButton = document.getElementById("copy-button");
+    // Get the copy button
+    const copyButton = document.getElementById("copy-button");
 
-  // Add an event listener for the click event
-  copyButton.addEventListener("click", () => {
-    // Get the result code element
-    const resultCode = document.querySelector(".result-code > code");
+    // Add an event listener for the click event
+    copyButton.addEventListener("click", () => {
 
-    // Select the text in the code element
-    resultCode.select();
+      // Get the result code element
+      const code = document.querySelector(".result-code > code");
 
-    // Copy the selected text to the clipboard
-    document.execCommand("copy");
-  });
-</script>
+      // Select the text in the code element
+      const range = document.createRange();
+      range.selectNode(code);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-  </body>
+      // Copy the selected text to the clipboard
+      document.execCommand("copy");
+
+      // Remove the selected text
+      window.getSelection().removeAllRanges();
+
+      // Display a message to the user
+      alert("The code has been copied to the clipboard.");
+
+      // clear the text in the code element and from the textarea if copied succesfully
+      code.innerHTML = "";
+      document.getElementById("text").value = "";
+    });
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>
