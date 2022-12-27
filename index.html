@@ -27,7 +27,18 @@
     </div>
   </div>
 </form>
-    <div id="result"></div>
+    
+    <div id="result" class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="card p-3">
+        <pre class="result-code"><code class="language-javascript"></code></pre>
+        <button type="button" class="btn btn-secondary mt-2" id="copy-button">Copy code</button>
+      </div>
+    </div>
+  </div>
+</div>
+
     <footer class="bg-light py-3 mt-5">
   <div class="container text-center">
     &copy; 2021 Replace ß with ss
@@ -58,7 +69,21 @@
         const result = replaceSs(text);
 
         // Display the result
-        document.getElementById("result").innerHTML = result;
+document.querySelector(".result-code > code").textContent = result;
+
+        // Get the copy button
+const copyButton = document.getElementById("copy-button");
+
+// Add an event listener for the click event
+copyButton.addEventListener("click", () => {
+  // Get the result code element
+  const resultCode = document.querySelector(".result-code > code");
+
+  // Select the text in the code element
+  resultCode.select();
+
+  // Copy the selected text to the clipboard
+  document.execCommand("copy");
       });
     </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
