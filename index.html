@@ -2,6 +2,30 @@
   <head>
     <title>Replace ß with ss</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <style>
+  pre {
+    background-color: #f6f8fa;
+    border-radius: 3px;
+    font-size: 85%;
+    line-height: 1.45;
+    overflow-x: auto;
+    padding: 16px;
+  }
+
+  code {
+    background-color: transparent;
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+
+  .highlight {
+    background-color: #fff5b1;
+  }
+</style>
+
   </head>
   <body>
     
@@ -68,8 +92,11 @@
         // Replace the "ß" characters with "ss"
         const result = replaceSs(text);
 
-        // Display the result
-document.querySelector(".result-code > code").textContent = result;
+        // Highlight the "ß" characters
+result = result.replace(/ß/g, '<span class="highlight">ß</span>');
+
+// Display the result
+document.querySelector(".result-code > code").innerHTML = result;
 
         // Get the copy button
 const copyButton = document.getElementById("copy-button");
