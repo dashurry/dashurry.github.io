@@ -51,7 +51,7 @@
       // Display a message to the user
       alert("The code has been copied to the clipboard.");
 
-      // clear the text in the code element and from the textarea if copied succesfully
+      // Clear the text in the code element and from the textarea if copied succesfully
       code.innerHTML = "";
       document.getElementById("text").value = "";
     });
